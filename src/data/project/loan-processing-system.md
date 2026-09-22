@@ -14,9 +14,14 @@ techStack:
   - Crystal Reports
 image: /images/projects/1.-dashboard.png
 gallery:
-  - /images/projects/loan-dashboard.png
-  - /images/projects/loan-deductions.png
-  - /images/projects/loan-client.png
+  - /images/projects/2-lps-client-profile.png
+  - /images/projects/3-lps-loan-profile.png
+  - /images/projects/4-lps-repayment.png
+  - /images/projects/5-lps-cash-position.png
+  - /images/projects/6-lps-taccounts.png
+  - /images/projects/7-lps-reports.png
+  - /images/projects/8-lps-settings.png
+  - /images/projects/9-lps-loan-product.png
 ---
 ## Overview
 

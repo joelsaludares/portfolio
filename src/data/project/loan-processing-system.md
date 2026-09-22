@@ -1,7 +1,7 @@
 ---
 title: Loan Processing System
 client: KASAPI Microfinance
-year: '2022'
+year: "2022"
 status: Completed
 category: Desktop Application
 summary: An end-to-end loan management system designed to handle loan
@@ -12,13 +12,12 @@ techStack:
   - VB.NET
   - MySQL
   - Crystal Reports
-image: /images/projects/loan-dashboard.png
+image: /images/projects/1.-dashboard.png
 gallery:
   - /images/projects/loan-dashboard.png
   - /images/projects/loan-deductions.png
   - /images/projects/loan-client.png
 ---
-
 ## Overview
 
 A centralized microfinance system covering the client and loan lifecycle, repayment processing, cash control, ledger/reporting, and policy-driven configuration.
@@ -33,11 +32,11 @@ I designed structured workflows around client profiling, loan application, amort
 
 ## Key Features
 
-- Client profiling and loan application
-- Amortization schedule and repayment processing
-- Cash monitoring and ledger workflows
-- T-accounts and financial reports
-- User access and approval workflows
+* Client profiling and loan application
+* Amortization schedule and repayment processing
+* Cash monitoring and ledger workflows
+* T-accounts and financial reports
+* User access and approval workflows
 
 ## Database Design
 

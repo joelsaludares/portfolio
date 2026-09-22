@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import Image from '~/components/common/Image.astro';
-import { getPermalink } from '~/utils/permalinks';
+import { getPermalink, getAsset } from '~/utils/permalinks';
 
 interface Props {
   project: CollectionEntry<'project'>;
@@ -11,6 +11,7 @@ interface Props {
 
 const { project, compact = false } = Astro.props;
 const url = getPermalink(`/projects/${project.id}`);
+const imageUrl = getAsset(project.data.image);
 ---
 
 <a
@@ -23,7 +24,7 @@ const url = getPermalink(`/projects/${project.id}`);
 >
   <div class:list={[compact ? 'sm:w-56 sm:shrink-0' : '']}>
     <Image
-      src={project.data.image}
+      src={imageUrl}
       alt={project.data.title}
       width={1000}
       height={600}

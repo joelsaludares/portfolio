@@ -1,7 +1,7 @@
 ---
 title: Loan Processing System
 client: KASAPI Microfinance
-year: "2022"
+year: "2021"
 status: Completed
 category: Desktop Application
 summary: An end-to-end loan management system designed to handle loan

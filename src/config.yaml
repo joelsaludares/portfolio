@@ -1,0 +1,62 @@
+site:
+  name: 'Joel Saludares'
+  site: 'https://joelsaludares.github.io/portfolio/'
+  base: '/portfolio/'
+  trailingSlash: false
+
+metadata:
+  title:
+    default: 'Joel Saludares — Business Systems Developer'
+    template: '%s — Joel Saludares'
+  description: 'Business systems development, process improvement, database design, automation, and data support portfolio of Joel Saludares.'
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: 'Joel Saludares'
+    images:
+      - url: '~/assets/images/default.png'
+        width: 1200
+        height: 628
+    type: website
+  twitter:
+    cardType: summary_large_image
+
+i18n:
+  language: en
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: false
+    postsPerPage: 6
+    post:
+      isEnabled: false
+      permalink: '/blog/%slug%'
+      robots:
+        index: false
+    list:
+      isEnabled: false
+      pathname: 'blog'
+      robots:
+        index: false
+    category:
+      isEnabled: false
+      pathname: 'category'
+      robots:
+        index: false
+    tag:
+      isEnabled: false
+      pathname: 'tag'
+      robots:
+        index: false
+    isRelatedPostsEnabled: false
+    relatedPostsCount: 0
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: null
+
+ui:
+  theme: 'light:only'

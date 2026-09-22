@@ -1,0 +1,12 @@
+---
+import site from '~/data/site.json';
+import { getAsset } from '~/utils/permalinks';
+
+const logo = site.branding?.logo || '/images/brand/logo.png';
+const logoSrc = getAsset(logo);
+---
+
+<span class="inline-flex items-center">
+  <img src={logoSrc} alt={`${site.profile.name} logo`} class="h-9 w-auto object-contain" width="58" height="36" />
+  <span class="sr-only">{site.profile.name}</span>
+</span>

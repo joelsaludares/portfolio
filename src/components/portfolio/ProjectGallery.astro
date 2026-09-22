@@ -1,0 +1,105 @@
+---
+import Image from '~/components/common/Image.astro';
+
+interface Props {
+  title: string;
+  images: string[];
+}
+const { title, images } = Astro.props;
+const allImages = images.length ? images : ['/favicon.ico'];
+---
+
+<div data-gallery class="space-y-4">
+  <div class="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-sm">
+    {
+      allImages.map((image, index) => (
+        <Image
+          src={image}
+          alt={`${title} screenshot ${index + 1}`}
+          width={1400}
+          height={820}
+          class:list={['gallery-slide w-full bg-white object-contain', index === 0 ? '' : 'hidden']}
+          loading={index === 0 ? 'eager' : 'lazy'}
+        />
+      ))
+    }
+    {
+      allImages.length > 1 && (
+        <>
+          <button
+            data-gallery-prev
+            type="button"
+            aria-label="Previous screenshot"
+            class="absolute left-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-slate-900 shadow-lg hover:bg-white"
+          >
+            ←
+          </button>
+          <button
+            data-gallery-next
+            type="button"
+            aria-label="Next screenshot"
+            class="absolute right-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-slate-900 shadow-lg hover:bg-white"
+          >
+            →
+          </button>
+        </>
+      )
+    }
+  </div>
+  {
+    allImages.length > 1 && (
+      <div class="grid grid-cols-3 gap-3 sm:grid-cols-4">
+        {allImages.map((image, index) => (
+          <button
+            type="button"
+            data-gallery-thumb={index}
+            aria-label={`Show screenshot ${index + 1}`}
+            class:list={[
+              'overflow-hidden rounded-xl border bg-white transition',
+              index === 0 ? 'border-primary ring-2 ring-blue-100' : 'border-slate-200 hover:border-slate-400',
+            ]}
+          >
+            <Image
+              src={image}
+              alt=""
+              width={320}
+              height={200}
+              class="aspect-[4/3] w-full object-cover"
+              loading="lazy"
+            />
+          </button>
+        ))}
+      </div>
+    )
+  }
+</div>
+
+<script>
+  const initGalleries = () => {
+    document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gallery) => {
+      if (gallery.dataset.bound === 'true') return;
+      gallery.dataset.bound = 'true';
+      const slides = Array.from(gallery.querySelectorAll<HTMLElement>('.gallery-slide'));
+      const thumbs = Array.from(gallery.querySelectorAll<HTMLElement>('[data-gallery-thumb]'));
+      if (!slides.length) return;
+      let index = 0;
+
+      const show = (nextIndex: number) => {
+        index = (nextIndex + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle('hidden', i !== index));
+        thumbs.forEach((thumb, i) => {
+          thumb.classList.toggle('border-primary', i === index);
+          thumb.classList.toggle('ring-2', i === index);
+          thumb.classList.toggle('ring-blue-100', i === index);
+          thumb.classList.toggle('border-slate-200', i !== index);
+        });
+      };
+
+      gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', () => show(index - 1));
+      gallery.querySelector('[data-gallery-next]')?.addEventListener('click', () => show(index + 1));
+      thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => show(i)));
+    });
+  };
+  document.addEventListener('DOMContentLoaded', initGalleries, { once: true });
+  document.addEventListener('astro:page-load', initGalleries);
+</script>

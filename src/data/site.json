@@ -1,0 +1,231 @@
+{
+  "contact": {
+    "eyebrow": "Get in touch",
+    "title": "Let's talk about your next system, process, or opportunity.",
+    "description": "Whether you need a custom business application, automation support, or simply want to connect, feel free to reach out.",
+    "formTitle": "Send a message",
+    "formNote": "Your message is submitted through the portfolio contact form. Please use a working email address so I can reply."
+  },
+  "skills": [
+    {
+      "group": "Development",
+      "items": ["Java SE", "VB.NET", "HTML", "CSS", "JavaScript", "Next.js", "Nest.js", "TypeScript"]
+    },
+    {
+      "group": "Data & Databases",
+      "items": ["MySQL", "Google BigQuery", "SQL", "Data Preparation", "PostgreSQL", "MS SQL"]
+    },
+    {
+      "group": "Automation & Reporting",
+      "items": ["Excel VBA", "Crystal Reports", "SAP GUI", "Microsoft Office"]
+    },
+    {
+      "group": "Delivery",
+      "items": ["UAT Support", "System Deployment", "Requirements Analysis", "Process Flow Design"]
+    }
+  ],
+  "approach": [
+    {
+      "title": "Understand",
+      "description": "Learn the real requirement and workflow.",
+      "icon": "tabler:search"
+    },
+    {
+      "title": "Analyze",
+      "description": "Identify gaps, rules, and opportunities.",
+      "icon": "tabler:git-compare"
+    },
+    {
+      "title": "Design",
+      "description": "Plan the solution and data structure.",
+      "icon": "tabler:layout-dashboard"
+    },
+    {
+      "title": "Develop",
+      "description": "Build and test iteratively.",
+      "icon": "tabler:code"
+    },
+    {
+      "title": "Implement",
+      "description": "Deploy, train, and support users.",
+      "icon": "tabler:rocket"
+    },
+    {
+      "title": "Improve",
+      "description": "Gather feedback and refine the system.",
+      "icon": "tabler:refresh"
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Science in Information Technology",
+    "school": "Nueva Ecija University of Science and Technology",
+    "period": "School Year 2013 – 2017"
+  },
+  "profile": {
+    "name": "Joel Saludares",
+    "social": {
+      "linkedin": "https://www.linkedin.com/in/joelsaludares",
+      "github": "https://github.com/joelsaludares"
+    },
+    "phone": "0975-554-6575",
+    "tagline": "Business Systems · Process Improvement · Automation",
+    "headlineLead": "I build practical systems for",
+    "headline": "I build practical systems for real business problems.",
+    "location": "Philippines",
+    "title": "Business Systems Developer",
+    "fullName": "Joel Palomo Saludares Jr.",
+    "email": "joelsaludares14@gmail.com",
+    "description": "I design and develop business applications, automate processes, and transform data into useful information — helping organizations work smarter and more efficiently.",
+    "cvUrl": "/files/Joel-Saludares-CV-2026.pdf",
+    "headlineAccent": "real business problems."
+  },
+  "experience": [
+    {
+      "period": "Mar 2026 – Jul 2026",
+      "company": "IT Prime Solutions Provider Corporation",
+      "role": "IT Support Specialist – Tech Rollout",
+      "project": "Designated Project: Unilever Philippines",
+      "bullets": [
+        "Participated in User Acceptance Testing (UAT) and resolved solution defects.",
+        "Conducted end-user training for stakeholders during system implementation.",
+        "Supported Go-Live activities for distributors including deployment and post-implementation support.",
+        "Conducted data validation for accurate data migration"
+      ]
+    },
+    {
+      "period": "Jan 2024 – Dec 2024",
+      "company": "IT Prime Solutions Provider Corporation",
+      "role": "Rollout and Data Support Specialist",
+      "project": "Designated Project: Unilever Philippines and Magnum RFM Ice Cream (Selecta)",
+      "bullets": [
+        "Participated in User Acceptance Testing (UAT) and resolved solution defects.",
+        "Conducted end-user training for stakeholders during system implementation.",
+        "Supported Go-Live activities for distributors, including deployment and post-implementation support."
+      ]
+    },
+    {
+      "period": "Feb 2022 – Dec 2023",
+      "company": "IT Prime Solutions Provider Corporation",
+      "role": "System Developer",
+      "project": "Designated Project: Unilever Philippines",
+      "bullets": [
+        "Gathered and analyzed stakeholder requirements for system development.",
+        "Facilitated pre-deployment and post-implementation BAU support.",
+        "Developed Excel-based automations using VBA Macros and SAP GUI."
+      ]
+    },
+    {
+      "period": "Jan 2018 – Jan 2022",
+      "company": "KASAPI – Kaagapay sa Pangkabuhayan Lending Inc.",
+      "role": "Senior Programmer",
+      "project": "Business applications for HR, Payroll, Inventory, and Loan Processing",
+      "bullets": [
+        "Developed and deployed desktop applications using VB.NET and MySQL.",
+        "Conducted requirements gathering, user story documentation, and process flow design.",
+        "Facilitated alpha testing and system transition to end-users."
+      ]
+    }
+  ],
+  "about": {
+    "intro": [
+      "I’m Joel Saludares, a systems developer with experience in building business applications, automating processes, and working with data to support operational teams.",
+      "My background includes HR, payroll, lending, inventory, reporting, Excel/VBA automation, UAT, implementation support, and database-driven application development.",
+      "I care about practical solutions: clear workflows, reliable data, maintainable systems, and tools that help people do their work with less friction."
+    ],
+    "howIThink": {
+      "eyebrow": "How I think",
+      "quote": "Technology becomes useful when it makes the real work easier to understand, control, and improve.",
+      "description": "My approach starts with the operation, not the technology. The system should support the workflow instead of forcing people to work around it."
+    },
+    "currentDirection": {
+      "eyebrow": "Current direction",
+      "title": "Building toward modern web systems and data analytics.",
+      "description": "I continue to expand beyond desktop development and automation while keeping business understanding, data integrity, and practical implementation at the center of my work."
+    }
+  },
+  "focusAreas": [
+    {
+      "title": "Business Systems",
+      "description": "Custom solutions for operational needs.",
+      "icon": "tabler:device-laptop"
+    },
+    {
+      "title": "Process Improvement",
+      "description": "Streamlined workflows that reduce manual work.",
+      "icon": "tabler:arrows-split-2"
+    },
+    {
+      "title": "Automation",
+      "description": "Tools and scripts that save time and effort.",
+      "icon": "tabler:bolt"
+    },
+    {
+      "title": "Data & Reporting",
+      "description": "Structured data turned into useful information.",
+      "icon": "tabler:chart-bar"
+    }
+  ],
+  "branding": {
+    "logo": "/images/brand/logo.png"
+  },
+  "actions": {
+    "projects": "Vier Projects",
+    "cv": "Download CV",
+    "contact": "Contact",
+    "cta": "CTA"
+  },
+  "stats": [
+    {
+      "value": "7+",
+      "label": "Years of experience"
+    },
+    {
+      "value": "7+",
+      "label": "Systems & tools documented"
+    },
+    {
+      "value": "4",
+      "label": "Core focus areas"
+    },
+    {
+      "value": "COUNTLESS",
+      "label": "Process Improve"
+    }
+  ],
+  "home": {
+    "heroPanel": {
+      "label": "Systems • Data • Automation",
+      "eyebrow": "Build · Automate · Improve",
+      "headline": "Good systems make complex work easier to run.",
+      "items": ["Workflow", "Database", "Reporting"],
+      "footerLabel": "Practical by design"
+    },
+    "featured": {
+      "eyebrow": "Featured projects",
+      "title": "Real systems. Real work.",
+      "description": "A selection of systems and automation work I’ve built or supported across HR, finance, reporting, and operational workflows.",
+      "linkLabel": "View all projects"
+    },
+    "focus": {
+      "eyebrow": "What I do",
+      "title": "Technology with business context.",
+      "description": "I work at the point where real-world operations, data, and software meet."
+    },
+    "approach": {
+      "eyebrow": "My approach",
+      "title": "Understand → Design → Build → Improve.",
+      "description": "I combine business understanding, process analysis, data modeling, and practical development to create solutions that support how people actually work."
+    },
+    "cta": {
+      "eyebrow": "Let's build something meaningful.",
+      "title": "Have a process that needs a better system?",
+      "description": "Whether you need a custom system, process automation, or data support, let’s discuss how I can help."
+    },
+    "actions": {
+      "projects": "View My Projects",
+      "cv": "Download CV",
+      "contact": "Get in touch",
+      "cta": "Get in touch"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+---
+interface Props {
+  categories: string[];
+  technologies: string[];
+}
+const { categories, technologies } = Astro.props;
+---
+
+<div class="mb-8 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+  <div class="grid gap-3 md:grid-cols-[1.5fr_1fr_1fr]">
+    <label class="sr-only" for="project-search">Search projects</label>
+    <input
+      id="project-search"
+      data-project-search
+      type="search"
+      placeholder="Search projects..."
+      class="h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-primary focus:bg-white focus:ring-4 focus:ring-blue-100"
+    />
+    <label class="sr-only" for="project-category">Filter by category</label>
+    <select
+      id="project-category"
+      data-project-category
+      class="h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-900 outline-none transition focus:border-primary focus:bg-white focus:ring-4 focus:ring-blue-100"
+    >
+      <option value="">All categories</option>
+      {categories.map((category) => <option value={category}>{category}</option>)}
+    </select>
+    <label class="sr-only" for="project-tech">Filter by technology</label>
+    <select
+      id="project-tech"
+      data-project-tech
+      class="h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-900 outline-none transition focus:border-primary focus:bg-white focus:ring-4 focus:ring-blue-100"
+    >
+      <option value="">All technologies</option>
+      {technologies.map((tech) => <option value={tech}>{tech}</option>)}
+    </select>
+  </div>
+</div>
+
+<script>
+  const initProjectFilters = () => {
+    const root = document.querySelector('[data-project-grid]');
+    const search = document.querySelector<HTMLInputElement>('[data-project-search]');
+    const category = document.querySelector<HTMLSelectElement>('[data-project-category]');
+    const tech = document.querySelector<HTMLSelectElement>('[data-project-tech]');
+    const empty = document.querySelector<HTMLElement>('[data-project-empty]');
+    if (!root || !search || !category || !tech) return;
+
+    const cards = Array.from(root.querySelectorAll<HTMLElement>('[data-project-card]'));
+
+    const apply = () => {
+      const query = search.value.trim().toLowerCase();
+      const categoryValue = category.value.toLowerCase();
+      const techValue = tech.value.toLowerCase();
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const haystack = (card.dataset.search || '').toLowerCase();
+        const cardCategory = (card.dataset.category || '').toLowerCase();
+        const cardTech = (card.dataset.tech || '').toLowerCase();
+        const matches =
+          (!query || haystack.includes(query)) &&
+          (!categoryValue || cardCategory === categoryValue) &&
+          (!techValue || cardTech.includes(techValue));
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+
+      if (empty) empty.hidden = visible !== 0;
+    };
+
+    search.addEventListener('input', apply);
+    category.addEventListener('change', apply);
+    tech.addEventListener('change', apply);
+  };
+
+  document.addEventListener('DOMContentLoaded', initProjectFilters, { once: true });
+  document.addEventListener('astro:page-load', initProjectFilters);
+</script>

@@ -1,0 +1,123 @@
+---
+import { Icon } from 'astro-icon/components';
+import Logo from '~/components/Logo.astro';
+import Button from '~/components/ui/Button.astro';
+import { getHomePermalink, trimSlash } from '~/utils/permalinks';
+import type { CallToAction } from '~/types';
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+
+export interface Props {
+  id?: string;
+  links?: Link[];
+  actions?: CallToAction[];
+  isSticky?: boolean;
+}
+
+const { id = 'header', links = [], actions = [], isSticky = false } = Astro.props;
+const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+---
+
+<header
+  class:list={[
+    { sticky: isSticky },
+    'top-0 z-50 mx-auto w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md transition-all',
+  ]}
+  {...isSticky ? { 'data-aw-sticky-header': true } : {}}
+  {...id ? { id } : {}}
+>
+  <div class="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6">
+    <a class="shrink-0" href={getHomePermalink()} aria-label="Joel Saludares home">
+      <Logo />
+    </a>
+
+    <nav id="site-nav" class="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+      {
+        links.map(({ text, href }) => (
+          <a
+            href={href}
+            class:list={[
+              'rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-primary',
+              { 'bg-blue-50 text-primary': href === currentPath },
+            ]}
+          >
+            {text}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden items-center gap-3 md:flex">
+      {actions.map((action) => <Button {...action} class="px-5 py-2.5 text-sm font-bold" />)}
+    </div>
+
+    <button
+      id="mobile-menu-toggle"
+      type="button"
+      class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 text-slate-900 md:hidden"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="mobile-navigation"
+    >
+      <span class="sr-only">Open navigation</span>
+      <Icon name="tabler:menu-2" class="h-6 w-6" />
+    </button>
+  </div>
+
+  <div id="mobile-navigation" class="hidden border-t border-slate-200 bg-white md:hidden">
+    <nav class="mx-auto flex max-w-7xl flex-col px-4 py-4 sm:px-6" aria-label="Mobile navigation">
+      {
+        links.map(({ text, href }) => (
+          <a
+            href={href}
+            class:list={[
+              'border-b border-slate-100 px-2 py-3.5 text-base font-semibold text-slate-700 last:border-0',
+              { 'text-primary': href === currentPath },
+            ]}
+          >
+            {text}
+          </a>
+        ))
+      }
+
+      {actions.map((action) => <Button {...action} class="mt-4 w-full" />)}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const initMobileNav = () => {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const panel = document.getElementById('mobile-navigation');
+
+    if (!toggle || !panel || toggle.dataset.bound === 'true') return;
+
+    toggle.dataset.bound = 'true';
+
+    const close = () => {
+      panel.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
+    };
+
+    toggle.addEventListener('click', () => {
+      const open = panel.classList.toggle('hidden') === false;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    });
+
+    panel.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) close();
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initMobileNav, { once: true });
+  document.addEventListener('astro:page-load', initMobileNav);
+</script>

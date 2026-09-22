@@ -1,0 +1,208 @@
+local_backend: true
+backend:
+  name: git-gateway
+  branch: main
+
+# The portfolio is generated from committed content. Decap writes changes directly
+# to the repository and the hosting provider rebuilds the site after publishing.
+
+media_folder: 'public/images/projects'
+public_folder: '/images/projects'
+
+# Global file upload locations used by image/file widgets.
+
+collections:
+  - name: 'settings'
+    label: 'Site Content'
+    files:
+      - name: 'site'
+        label: 'Profile, Homepage & Site Settings'
+        file: 'src/data/site.json'
+        fields:
+          - label: 'Branding'
+            name: 'branding'
+            widget: 'object'
+            fields:
+              - {
+                  label: 'Logo',
+                  name: 'logo',
+                  widget: 'image',
+                  media_folder: 'public/images/brand',
+                  public_folder: '/images/brand',
+                }
+
+          - label: 'Profile & Contact Identity'
+            name: 'profile'
+            widget: 'object'
+            fields:
+              - { label: 'Display Name', name: 'name', widget: 'string' }
+              - { label: 'Full Name', name: 'fullName', widget: 'string' }
+              - { label: 'Professional Title', name: 'title', widget: 'string' }
+              - { label: 'Tagline', name: 'tagline', widget: 'string' }
+              - { label: 'Hero Headline Lead', name: 'headlineLead', widget: 'string' }
+              - { label: 'Hero Headline Accent', name: 'headlineAccent', widget: 'string' }
+              - { label: 'Hero Description', name: 'description', widget: 'text' }
+              - { label: 'Location', name: 'location', widget: 'string' }
+              - { label: 'Email', name: 'email', widget: 'string' }
+              - { label: 'Phone', name: 'phone', widget: 'string' }
+              - { label: 'CV', name: 'cvUrl', widget: 'file', media_folder: 'public/files', public_folder: '/files' }
+              - label: 'Social Links'
+                name: 'social'
+                widget: 'object'
+                fields:
+                  - { label: 'LinkedIn', name: 'linkedin', widget: 'string', required: false }
+                  - { label: 'GitHub', name: 'github', widget: 'string', required: false }
+
+          - label: 'Homepage Content'
+            name: 'home'
+            widget: 'object'
+            fields:
+              - label: 'Hero Panel'
+                name: 'heroPanel'
+                widget: 'object'
+                fields:
+                  - { label: 'Label', name: 'label', widget: 'string' }
+                  - { label: 'Eyebrow', name: 'eyebrow', widget: 'string' }
+                  - { label: 'Headline', name: 'headline', widget: 'string' }
+                  - { label: 'Panel Items', name: 'items', widget: 'list' }
+                  - { label: 'Footer Label', name: 'footerLabel', widget: 'string' }
+              - label: 'Featured Projects Section'
+                name: 'featured'
+                widget: 'object'
+                fields:
+                  - { label: 'Eyebrow', name: 'eyebrow', widget: 'string' }
+                  - { label: 'Title', name: 'title', widget: 'string' }
+                  - { label: 'Description', name: 'description', widget: 'text' }
+                  - { label: 'Link Label', name: 'linkLabel', widget: 'string' }
+              - label: 'What I Do Section'
+                name: 'focus'
+                widget: 'object'
+                fields:
+                  - { label: 'Eyebrow', name: 'eyebrow', widget: 'string' }
+                  - { label: 'Title', name: 'title', widget: 'string' }
+                  - { label: 'Description', name: 'description', widget: 'text' }
+              - label: 'Approach Section'
+                name: 'approach'
+                widget: 'object'
+                fields:
+                  - { label: 'Eyebrow', name: 'eyebrow', widget: 'string' }
+                  - { label: 'Title', name: 'title', widget: 'string' }
+                  - { label: 'Description', name: 'description', widget: 'text' }
+              - label: 'CTA Section'
+                name: 'cta'
+                widget: 'object'
+                fields:
+                  - { label: 'Eyebrow', name: 'eyebrow', widget: 'string' }
+                  - { label: 'Title', name: 'title', widget: 'string' }
+                  - { label: 'Description', name: 'description', widget: 'text' }
+
+          - label: 'Homepage Action Labels'
+            name: 'actions'
+            widget: 'object'
+            fields:
+              - { label: 'View Projects Button', name: 'projects', widget: 'string' }
+              - { label: 'Download CV Button', name: 'cv', widget: 'string' }
+              - { label: 'Hero Contact Link', name: 'contact', widget: 'string' }
+              - { label: 'Bottom CTA Button', name: 'cta', widget: 'string' }
+
+          - label: 'Homepage Statistics'
+            name: 'stats'
+            widget: 'list'
+            fields:
+              - { label: 'Value', name: 'value', widget: 'string' }
+              - { label: 'Label', name: 'label', widget: 'string' }
+
+          - label: 'What I Do'
+            name: 'focusAreas'
+            widget: 'list'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+              - { label: 'Icon', name: 'icon', widget: 'string' }
+
+          - label: 'How I Work'
+            name: 'approach'
+            widget: 'list'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+              - { label: 'Icon', name: 'icon', widget: 'string' }
+
+          - label: 'Skills & Technologies'
+            name: 'skills'
+            widget: 'list'
+            fields:
+              - { label: 'Group', name: 'group', widget: 'string' }
+              - { label: 'Skills', name: 'items', widget: 'list' }
+
+          - label: 'Professional Experience'
+            name: 'experience'
+            widget: 'list'
+            fields:
+              - { label: 'Period', name: 'period', widget: 'string' }
+              - { label: 'Company', name: 'company', widget: 'string' }
+              - { label: 'Role', name: 'role', widget: 'string' }
+              - { label: 'Project / Assignment', name: 'project', widget: 'string' }
+              - { label: 'Responsibilities', name: 'bullets', widget: 'list' }
+
+          - label: 'Education'
+            name: 'education'
+            widget: 'object'
+            fields:
+              - { label: 'Degree', name: 'degree', widget: 'string' }
+              - { label: 'School', name: 'school', widget: 'string' }
+              - { label: 'Period', name: 'period', widget: 'string' }
+
+          - label: 'About Page'
+            name: 'about'
+            widget: 'object'
+            fields:
+              - { label: 'Intro Paragraphs', name: 'intro', widget: 'list' }
+              - label: 'How I Think'
+                name: 'howIThink'
+                widget: 'object'
+                fields:
+                  - { label: 'Eyebrow', name: 'eyebrow', widget: 'string' }
+                  - { label: 'Quote', name: 'quote', widget: 'text' }
+                  - { label: 'Description', name: 'description', widget: 'text' }
+              - label: 'Current Direction'
+                name: 'currentDirection'
+                widget: 'object'
+                fields:
+                  - { label: 'Eyebrow', name: 'eyebrow', widget: 'string' }
+                  - { label: 'Title', name: 'title', widget: 'string' }
+                  - { label: 'Description', name: 'description', widget: 'text' }
+
+          - label: 'Contact Page'
+            name: 'contact'
+            widget: 'object'
+            fields:
+              - { label: 'Eyebrow', name: 'eyebrow', widget: 'string' }
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+              - { label: 'Form Title', name: 'formTitle', widget: 'string' }
+              - { label: 'Form Note', name: 'formNote', widget: 'text' }
+
+  - name: 'project'
+    label: 'Projects'
+    label_singular: 'Project'
+    folder: 'src/data/project'
+    create: true
+    slug: '{{slug}}'
+    format: 'frontmatter'
+    identifier_field: 'title'
+    sortable_fields: ['year', 'title', 'category']
+    summary: '{{title}} · {{client}} · {{year}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Client / Organization', name: 'client', widget: 'string' }
+      - { label: 'Year', name: 'year', widget: 'string' }
+      - { label: 'Status', name: 'status', widget: 'select', options: ['Ongoing', 'Completed'] }
+      - { label: 'Category', name: 'category', widget: 'string' }
+      - { label: 'Summary', name: 'summary', widget: 'text' }
+      - { label: 'My Role', name: 'role', widget: 'string' }
+      - { label: 'Featured on Home', name: 'featured', widget: 'boolean', default: false }
+      - { label: 'Technology Stack', name: 'techStack', widget: 'list' }
+      - { label: 'Hero Image', name: 'image', widget: 'image' }
+      - { label: 'Gallery', name: 'gallery', widget: 'list', field: { label: 'Image', name: 'image', widget: 'image' } }
+      - { label: 'Case Study Content', name: 'body', widget: 'richtext' }

@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '~/layouts/PageLayout.astro';
+import SectionHeading from '~/components/portfolio/SectionHeading.astro';
+import ProjectCard from '~/components/portfolio/ProjectCard.astro';
+import ProjectFilters from '~/components/portfolio/ProjectFilters.astro';
+
+const projectYear = (year: string) => (Number.isFinite(Number(year)) ? Number(year) : 9999);
+const projects = (await getCollection('project')).sort((a, b) => projectYear(b.data.year) - projectYear(a.data.year));
+const categories = [...new Set(projects.map((project) => project.data.category))].sort();
+const technologies = [...new Set(projects.flatMap((project) => project.data.techStack))].sort();
+const metadata = {
+  title: 'Projects',
+  description:
+    'A collection of business systems, automation tools, data solutions, and applications built to solve real operational problems.',
+};
+---
+
+<PageLayout metadata={metadata}>
+  <section class="px-4 py-16 sm:px-6 md:py-24">
+    <div class="mx-auto max-w-7xl">
+      <SectionHeading
+        eyebrow="My work"
+        title="Systems that make a difference."
+        description="Browse the projects and case studies behind my work in business systems, automation, reporting, and application development."
+      />
+      <div class="mt-8"><ProjectFilters categories={categories} technologies={technologies} /></div>
+      <div data-project-grid class="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+        {
+          projects.map((project) => (
+            <div
+              data-project-card
+              data-category={project.data.category}
+              data-tech={project.data.techStack.join(' ')}
+              data-search={`${project.data.title} ${project.data.client} ${project.data.category} ${project.data.summary} ${project.data.techStack.join(' ')}`}
+            >
+              <ProjectCard project={project} />
+            </div>
+          ))
+        }
+      </div>
+      <div
+        data-project-empty
+        hidden
+        class="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center"
+      >
+        <h2 class="text-lg font-bold text-slate-900">No projects found.</h2>
+        <p class="mt-2 text-sm text-slate-500">Try a different search or filter.</p>
+      </div>
+    </div>
+  </section>
+</PageLayout>

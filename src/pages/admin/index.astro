@@ -1,0 +1,20 @@
+---
+// Keep /admin as the friendly entry point, but let Decap run from its
+// conventional static /admin/index.html location.
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta http-equiv="refresh" content="0; url=/admin/index.html" />
+    <title>Portfolio CMS</title>
+  </head>
+  <body>
+    <p>Opening the Portfolio CMS…</p>
+    <script is:inline>
+      window.location.replace('/admin/index.html');
+    </script>
+  </body>
+</html>

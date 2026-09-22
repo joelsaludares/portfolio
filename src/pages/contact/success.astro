@@ -1,0 +1,26 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import Button from '~/components/ui/Button.astro';
+import { getPermalink } from '~/utils/permalinks';
+---
+
+<PageLayout metadata={{ title: 'Message Sent' }}>
+  <section class="px-4 py-20 sm:px-6 md:py-28">
+    <div class="mx-auto max-w-xl rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm sm:p-10">
+      <div
+        class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-2xl text-primary"
+        aria-hidden="true"
+      >
+        ✓
+      </div>
+      <p class="mt-6 text-xs font-bold uppercase tracking-[0.18em] text-primary">Thank you</p>
+      <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-950">Your message has been sent.</h1>
+      <p class="mt-4 text-sm leading-6 text-slate-600">
+        Thanks for getting in touch. I’ll review your message and get back to you.
+      </p>
+      <div class="mt-7">
+        <Button text="Back to home" href={getPermalink('/')} variant="primary" icon="tabler:arrow-left" />
+      </div>
+    </div>
+  </section>
+</PageLayout>

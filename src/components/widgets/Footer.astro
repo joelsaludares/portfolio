@@ -1,0 +1,83 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getHomePermalink } from '~/utils/permalinks';
+import Logo from '~/components/Logo.astro';
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+interface Links {
+  title?: string;
+  links: Link[];
+}
+export interface Props {
+  links: Links[];
+  secondaryLinks: Link[];
+  socialLinks: Link[];
+  footNote?: string;
+}
+const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Astro.props;
+---
+
+<footer class="border-t border-slate-200 bg-slate-950 text-white">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div>
+        <a href={getHomePermalink()} class="inline-flex [&_img]:brightness-0 [&_img]:invert"><Logo /></a>
+        <p class="mt-4 max-w-sm text-sm leading-6 text-slate-400">
+          Business systems, process improvement, automation, and practical data solutions.
+        </p>
+        {
+          secondaryLinks.length > 0 && (
+            <div class="mt-4 flex flex-wrap gap-3 text-sm text-slate-400">
+              {secondaryLinks.map(({ text, href }) => (
+                <a href={href} class="hover:text-white">
+                  {text}
+                </a>
+              ))}
+            </div>
+          )
+        }
+      </div>
+      {
+        links.map(({ title, links: footerLinks }) => (
+          <div>
+            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300">{title}</h2>
+            <ul class="mt-4 space-y-2 text-sm">
+              {footerLinks.map(({ text, href }) => (
+                <li>
+                  <a href={href} class="text-slate-400 transition hover:text-white">
+                    {text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+    <div
+      class="mt-10 flex flex-col gap-5 border-t border-slate-800 pt-6 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p class="text-xs text-slate-500">{footNote}</p>
+      <div class="flex items-center gap-2">
+        {
+          socialLinks.map(({ ariaLabel, href, icon }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={ariaLabel}
+              class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-800 text-slate-400 transition hover:border-slate-600 hover:text-white"
+            >
+              {icon && <Icon name={icon} class="h-5 w-5" />}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>

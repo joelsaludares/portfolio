@@ -1,10 +1,12 @@
 ---
 import Image from '~/components/common/Image.astro';
+import { getAsset } from '~/utils/permalinks';
 
 interface Props {
   title: string;
   images: string[];
 }
+
 const { title, images } = Astro.props;
 const allImages = images.length ? images : ['/favicon.ico'];
 ---
@@ -14,7 +16,7 @@ const allImages = images.length ? images : ['/favicon.ico'];
     {
       allImages.map((image, index) => (
         <Image
-          src={image}
+          src={getAsset(image)}
           alt={`${title} screenshot ${index + 1}`}
           width={1400}
           height={820}
@@ -23,6 +25,7 @@ const allImages = images.length ? images : ['/favicon.ico'];
         />
       ))
     }
+
     {
       allImages.length > 1 && (
         <>
@@ -34,6 +37,7 @@ const allImages = images.length ? images : ['/favicon.ico'];
           >
             ←
           </button>
+
           <button
             data-gallery-next
             type="button"
@@ -46,6 +50,7 @@ const allImages = images.length ? images : ['/favicon.ico'];
       )
     }
   </div>
+
   {
     allImages.length > 1 && (
       <div class="grid grid-cols-3 gap-3 sm:grid-cols-4">
@@ -60,7 +65,7 @@ const allImages = images.length ? images : ['/favicon.ico'];
             ]}
           >
             <Image
-              src={image}
+              src={getAsset(image)}
               alt=""
               width={320}
               height={200}
@@ -78,15 +83,23 @@ const allImages = images.length ? images : ['/favicon.ico'];
   const initGalleries = () => {
     document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gallery) => {
       if (gallery.dataset.bound === 'true') return;
+
       gallery.dataset.bound = 'true';
+
       const slides = Array.from(gallery.querySelectorAll<HTMLElement>('.gallery-slide'));
       const thumbs = Array.from(gallery.querySelectorAll<HTMLElement>('[data-gallery-thumb]'));
+
       if (!slides.length) return;
+
       let index = 0;
 
       const show = (nextIndex: number) => {
         index = (nextIndex + slides.length) % slides.length;
-        slides.forEach((slide, i) => slide.classList.toggle('hidden', i !== index));
+
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('hidden', i !== index);
+        });
+
         thumbs.forEach((thumb, i) => {
           thumb.classList.toggle('border-primary', i === index);
           thumb.classList.toggle('ring-2', i === index);
@@ -96,10 +109,15 @@ const allImages = images.length ? images : ['/favicon.ico'];
       };
 
       gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', () => show(index - 1));
+
       gallery.querySelector('[data-gallery-next]')?.addEventListener('click', () => show(index + 1));
-      thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => show(i)));
+
+      thumbs.forEach((thumb, i) => {
+        thumb.addEventListener('click', () => show(i));
+      });
     });
   };
+
   document.addEventListener('DOMContentLoaded', initGalleries, { once: true });
   document.addEventListener('astro:page-load', initGalleries);
 </script>

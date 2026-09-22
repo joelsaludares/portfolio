@@ -6,7 +6,7 @@ import Button from '~/components/ui/Button.astro';
 import SectionHeading from '~/components/portfolio/SectionHeading.astro';
 import ProjectCard from '~/components/portfolio/ProjectCard.astro';
 import site from '~/data/site.json';
-import { getPermalink } from '~/utils/permalinks';
+import { getPermalink, getAsset } from '~/utils/permalinks';
 
 const projectYear = (year: string) => (Number.isFinite(Number(year)) ? Number(year) : 9999);
 
@@ -61,7 +61,7 @@ const contactUrl = getPermalink('/contact');
 
             <Button
               text={site.home.actions.cv}
-              href={getPermalink(site.profile.cvUrl)}
+              href={getAsset(site.profile.cvUrl)}
               variant="secondary"
               icon="tabler:download"
               download

@@ -2,7 +2,7 @@ site:
   name: 'Joel Saludares'
   site: 'https://joelsaludares.github.io/portfolio/'
   base: '/portfolio/'
-  trailingSlash: false
+  trailingSlash: true
 
 metadata:
   title:

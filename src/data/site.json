@@ -154,23 +154,9 @@
   ],
   "about": {
     "intro": [
-      "I’m Joel Palomo Saludares Jr.",
-      "a systems developer with experience in building business applications",
-      "automating processes",
-      "and working with data to support operational teams.",
-      "My background includes HR",
-      "payroll",
-      "lending",
-      "inventory",
-      "reporting",
-      "Excel/VBA automation",
-      "UAT",
-      "implementation support",
-      "and database-driven application development.",
-      "I care about practical solutions: clear workflows",
-      "reliable data",
-      "maintainable systems",
-      "and tools that help people do their work with less friction."
+      "I’m Joel Palomo Saludares Jr., a systems developer with experience in building business applications, automating processes, and working with data to support operational teams.",
+      "My background includes HR, payroll, lending, inventory, reporting, Excel/VBA automation, UAT, implementation support, and database-driven application development.",
+      "I care about practical solutions: clear workflows, reliable data, maintainable systems, and tools that help people do their work with less friction."
     ],
     "howIThink": {
       "eyebrow": "How I think",

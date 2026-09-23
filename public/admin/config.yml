@@ -1,4 +1,3 @@
-
 backend:
   name: turbo-github
   turbo_site_id: 6a6fcc97-273c-4af3-8bb0-3ae1bba4f11e
@@ -158,7 +157,14 @@ collections:
             name: 'about'
             widget: 'object'
             fields:
-              - { label: 'Intro Paragraphs', name: 'intro', widget: 'list' }
+              - label: 'Intro Paragraphs'
+                name: 'intro'
+                widget: 'list'
+                field:
+                  label: 'Paragraph'
+                  name: 'paragraph'
+                  widget: 'text'
+
               - label: 'How I Think'
                 name: 'howIThink'
                 widget: 'object'
@@ -166,6 +172,7 @@ collections:
                   - { label: 'Eyebrow', name: 'eyebrow', widget: 'string' }
                   - { label: 'Quote', name: 'quote', widget: 'text' }
                   - { label: 'Description', name: 'description', widget: 'text' }
+
               - label: 'Current Direction'
                 name: 'currentDirection'
                 widget: 'object'
